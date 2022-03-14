@@ -10,7 +10,6 @@ function initCarousel() {
   setArrowStyle(carouselArrowLeft, carouselArrowRight, currentSlideIndex, slides.length)
 
   carouselArrowRight.addEventListener('click', (event) => {
-    console.log(event.target.classList)
     currentSlideIndex += 1
     container.style.transform = `translateX(-${offsetWidth * currentSlideIndex}px)`
     setArrowStyle(carouselArrowLeft, carouselArrowRight, currentSlideIndex, slides.length)
