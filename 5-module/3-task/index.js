@@ -1,28 +1,28 @@
 function initCarousel() {
-  const carouselArrowRight = document.querySelector('.carousel__arrow_right')
-  const carouselArrowLeft = document.querySelector('.carousel__arrow_left')
+  var carouselArrowRight = document.querySelector('.carousel__arrow_right')
+  var carouselArrowLeft = document.querySelector('.carousel__arrow_left')
 
-  const container = document.querySelector('.carousel__inner')
-  const offsetWidth = container.offsetWidth
-  const slides = Array.from(document.querySelectorAll('.carousel__slide'))
-  let currentSlideIndex = 0
+  var container = document.querySelector('.carousel__inner')
+  var offsetWidth = container.offsetWidth
+  var slides = Array.from(document.querySelectorAll('.carousel__slide'))
+  var currentSlideIndex = 0
 
-  setArrowStyle(carouselArrowLeft, carouselArrowRight, currentSlideIndex, slides.length)
+  const setArrowStyle = () => {
+    carouselArrowLeft.style.display = currentSlideIndex === 0 ? 'none' : ''
+    carouselArrowRight.style.display = currentSlideIndex === slides.length - 1 ? 'none' : ''
+  }
+
+  setArrowStyle()
 
   carouselArrowRight.addEventListener('click', (event) => {
     currentSlideIndex += 1
     container.style.transform = `translateX(-${offsetWidth * currentSlideIndex}px)`
-    setArrowStyle(carouselArrowLeft, carouselArrowRight, currentSlideIndex, slides.length)
+    setArrowStyle()
   })
 
   carouselArrowLeft.addEventListener('click', () => {
     currentSlideIndex -= 1
     container.style.transform = `translateX(-${offsetWidth * currentSlideIndex}px)`
-    setArrowStyle(carouselArrowLeft, carouselArrowRight, currentSlideIndex, slides.length)
+    setArrowStyle()
   })
-}
-
-const setArrowStyle = (arrowLeft, arrowRight, currentSlideIndex, slidesCount) => {
-  arrowLeft.style.display = currentSlideIndex === 0 ? 'none' : ''
-  arrowRight.style.display = currentSlideIndex === slidesCount - 1 ? 'none' : ''
 }
