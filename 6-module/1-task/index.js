@@ -44,7 +44,7 @@ export default class UserTable {
         <td><button data-action="remove">X</button></td>
       </tr>`
     )
-    )
+    ).join('')
   }
 
   #template() {
