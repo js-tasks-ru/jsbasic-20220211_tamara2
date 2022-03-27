@@ -30,11 +30,15 @@ export default class Modal {
   }
 
   setTitle(title) {
-    this.#modal.querySelector('.modal__title').textContent = title
+    if(this.#modal.querySelector('.modal__title')) {
+      this.#modal.querySelector('.modal__title').textContent = title
+    }
   }
 
   setBody(body) {
-    this.#modal.querySelector('.modal__body').innerHTML = body.innerHTML
+    const modalBody = this.#modal.querySelector('.modal__body')
+    modalBody.innerHTML = ''
+    modalBody.append(body)
   }
 
   open() {
@@ -46,7 +50,9 @@ export default class Modal {
   close() {
     document.removeEventListener('keydown', this.#onKeyDown)
     document.body.classList.remove('is-modal-open')
-    document.body.querySelector('.modal').remove()
+    if (this.#modal) {
+      this.#modal.remove()
+    }
   }
 
   #addListeners() {
