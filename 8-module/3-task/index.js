@@ -10,7 +10,6 @@ export default class Cart {
       return
     }
     let itemIndex = this.cartItems.findIndex(item => item.product.id === product.id)
-    console.log(itemIndex)
     if (itemIndex !== -1) {
       this.cartItems[itemIndex].count++
     } else {
